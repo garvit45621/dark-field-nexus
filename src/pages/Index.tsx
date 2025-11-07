@@ -6,10 +6,10 @@ import MusicPlayer from "@/components/MusicPlayer";
 
 const Index = () => {
   const fieldingTeam = [
-    "Nitesh Samota",
-    "Ronit",
-    "Ankesh Raj",
-    "Harsh Kumar",
+    "Elite members-Ronit Yadav",
+    "Elite members-Nitesh Samota",
+    "Elite members-Harsh Kumar",
+    "Elite members-Ankesh Raj",
     "Himanshu Kaushik",
     "Anand Mishra"
   ];
