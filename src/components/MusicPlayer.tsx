@@ -44,10 +44,10 @@ const MusicPlayer = () => {
 
   return (
     <>
-      {/* Audio Element - Replace src with actual song URL */}
+      {/* Audio Element - Actual song source */}
       <audio
         ref={audioRef}
-        src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/8c/0a/3d/8c0a3d3e-0d0a-0b5e-8a7e-6e0f5e5a5e5e/mzaf_1234567890123456789.plus.aac.p.m4a"
+        src="https://pagalworld.download/128-Bambiha-Bole-Sidhu-Moose-Wala.mp3"
         loop
       />
 
@@ -82,7 +82,7 @@ const MusicPlayer = () => {
             </div>
 
             <div className="space-y-1">
-              <p className="font-black text-foreground text-sm">Bambino Bole</p>
+              <p className="font-black text-foreground text-sm">Bambiha Bole</p>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">
                 Amrit Maan × Sidhu Moosewala
               </p>
@@ -127,7 +127,7 @@ const MusicPlayer = () => {
             </div>
 
             <p className="text-xs text-muted-foreground text-center pt-2 border-t border-deadly-border">
-              Replace audio source with actual song file
+              Bambiha Bole – Sidhu Moosewala × Amrit Maan
             </p>
           </Card>
         )}
@@ -137,3 +137,4 @@ const MusicPlayer = () => {
 };
 
 export default MusicPlayer;
+
