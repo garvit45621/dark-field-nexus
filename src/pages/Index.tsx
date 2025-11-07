@@ -6,6 +6,7 @@ import { Skull } from "lucide-react";
 const Index = () => {
   const fieldingTeam = [
     "Nitesh Samota",
+    "Ronit",
     "Ankesh Raj",
     "Harsh Kumar",
     "Himanshu Kaushik",
