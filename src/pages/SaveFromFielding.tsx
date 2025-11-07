@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -6,8 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Calculator } from "lucide-react";
 import { toast } from "sonner";
+import { useAudio } from "@/contexts/AudioContext";
 
 const SaveFromFielding = () => {
+  const { stopSong, currentSong } = useAudio();
+
+  // Stop MILA TOH MAREGA when entering this page
+  useEffect(() => {
+    if (currentSong?.title === "MILA TOH MAREGA") {
+      stopSong();
+    }
+  }, []);
   const [name, setName] = useState("");
   const [place, setPlace] = useState("");
   const [time, setTime] = useState("");

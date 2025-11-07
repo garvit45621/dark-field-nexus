@@ -1,10 +1,28 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skull } from "lucide-react";
 import MusicPlayer from "@/components/MusicPlayer";
+import { useAudio } from "@/contexts/AudioContext";
 
 const Index = () => {
+  const { playSong, currentSong } = useAudio();
+
+  // Auto-play MILA TOH MAREGA when landing on homepage
+  useEffect(() => {
+    // Only auto-play if it's the default welcome song
+    if (currentSong?.title === "MILA TOH MAREGA") {
+      playSong({
+        title: "MILA TOH MAREGA",
+        artist: "Welcome Track",
+        src: "/MILA TOH MAREGA.mp3",
+        startTime: 20,
+        endTime: 30,
+        loop: true,
+      });
+    }
+  }, []); // Run only on mount
   const fieldingTeam = [
     "Elite members-Ronit Yadav",
     "Elite members-Nitesh Samota",
@@ -37,14 +55,21 @@ const Index = () => {
             Fielding Team
           </h2>
           <div className="space-y-2">
-            {fieldingTeam.map((member, index) => (
-              <div
-                key={index}
-                className="bg-secondary border border-deadly-border rounded-lg p-3 text-center font-bold text-foreground hover:bg-muted transition-colors"
-              >
-                {member}
-              </div>
-            ))}
+            {fieldingTeam.map((member, index) => {
+              const isElite = member.toLowerCase().includes("elite");
+              return (
+                <div
+                  key={index}
+                  className={`${
+                    isElite
+                      ? "bg-deadly-red/20 border-deadly-red deadly-glow"
+                      : "bg-secondary border-deadly-border"
+                  } border rounded-lg p-3 text-center font-bold text-foreground hover:bg-muted transition-colors`}
+                >
+                  {member}
+                </div>
+              );
+            })}
           </div>
         </Card>
 

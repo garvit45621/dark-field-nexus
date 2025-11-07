@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Zap, Crown, Flame } from "lucide-react";
 import { toast } from "sonner";
+import { useAudio } from "@/contexts/AudioContext";
 
 const JoinTeam = () => {
+  const { stopSong, currentSong } = useAudio();
+
+  // Stop MILA TOH MAREGA when entering this page
+  useEffect(() => {
+    if (currentSong?.title === "MILA TOH MAREGA") {
+      stopSong();
+    }
+  }, []);
   const subscriptionPlans = [
     {
       name: "Monthly",

@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Calculator } from "lucide-react";
 import { toast } from "sonner";
+import { useAudio } from "@/contexts/AudioContext";
 
 const SetFielding = () => {
+  const navigate = useNavigate();
+  const { playSong, stopSong, currentSong } = useAudio();
+
+  // Stop MILA TOH MAREGA when entering this page
+  useEffect(() => {
+    if (currentSong?.title === "MILA TOH MAREGA") {
+      stopSong();
+    }
+  }, []);
   const [name, setName] = useState("");
   const [place, setPlace] = useState("");
   const [time, setTime] = useState("");
@@ -29,7 +39,23 @@ const SetFielding = () => {
       toast.error("Fill all fields");
       return;
     }
+
+    // Play the song BEFORE showing toast and navigating (7-17 seconds segment in loop)
+    playSong({
+      title: "Dus Don",
+      artist: "Dada Sadhu HR × Gadi Number",
+      src: "/dus-don.mp3",
+      startTime: 7,
+      endTime: 17,
+      loop: true,
+    });
+
     toast.success("Fielding Set Successfully!");
+
+    // Navigate to homepage after a longer delay to ensure audio starts
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
   return (
