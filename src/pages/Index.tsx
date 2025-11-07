@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skull } from "lucide-react";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const Index = () => {
   const fieldingTeam = [
@@ -15,6 +16,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-deadly-darker py-8 px-4">
+      <MusicPlayer />
       <div className="max-w-md mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
